@@ -1,0 +1,8 @@
+{
+    "name": "EMR",
+    "short_name": "EMR",
+    "description": "Progressive Web Application",
+    "start_url": "/",
+    "display": "standalone"
+  }
+  

@@ -1,0 +1,212 @@
+<!-- usingss --><link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-iconset-svg/iron-iconset-svg.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-item/paper-icon-item.html">
+<!-- <link rel="import" href="../bower_components/paper-searchbox/paper-searchbox.html"> -->
+
+
+<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+
+<link rel="import" href="../bower_components/app-layout/demo/sample-content.html">
+
+
+<dom-module id="my-app">
+    <!-- UI -->
+
+    <template>
+        <style>
+             :host {
+                display: block;
+            }
+
+            body {
+                margin: 0;
+            }
+
+            app-header {
+                background-color: #02503C;
+                color: #FAFAFA;
+            }
+
+            app-header paper-icon-button {
+                --paper-icon-button-ink-color: #fff;
+            }
+
+            app-drawer-layout {
+                --app-drawer-layout-content-transition: margin 0.2s;
+            }
+
+            app-drawer {
+                --app-drawer-content-container: {
+                    background-color: #eee;
+                }
+            }
+
+            paper-search-bar {
+                width: 220px;
+            }
+
+            .drawer-content {
+                margin-top: 80px;
+                height: calc(100% - 80px);
+                overflow: auto;
+            }
+
+            /* @media (min-width: 600px) {
+                .headerButtonSearch {
+                    visibility: hidden;
+                }
+                .headerSearchPaperInputContainer {
+                    visibility: visible;
+                }
+            }
+
+            @media (max-width: 600px) {
+                .headerButtonSearch,
+                .headerSearchPaperInputContainer {
+                    visibility: visible;
+                }
+                .headerSearchPaperInputContainer {
+                    visibility: hidden;
+                }
+            } */
+        </style>
+
+        <!-- html/polymer tags -->
+        <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
+        <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
+
+        <app-header-layout>
+            <app-header fixed="" effects="waterfall" slot="header">
+                <app-toolbar>
+                    <paper-icon-button id="toggle" icon="menu" on-tap="toggleMenu"></paper-icon-button>
+                    <div main-title="">EMR</div>
+                    <!-- main-title -->
+                    <!-- <paper-icon-button icon="search" class="headerButtonSearch" on-tap="toggleSearch"></paper-icon-button> -->
+                    <!-- <div class="bg-dark">
+                        <paper-searchbox raise-on-active raise-on-value icon="search" placeholder="Search Patient"></paper-searchbox>
+                    </div> -->
+                </app-toolbar>
+            </app-header>
+
+            <app-drawer-layout id="drawerLayout">
+                <app-drawer slot="drawer">
+                    <div class="drawer-content">
+                        <paper-icon-item>
+                            <iron-icon icon="inbox" slot="item-icon"></iron-icon> <span>Inbox</span>
+                        </paper-icon-item>
+                        <paper-icon-item>
+                            <iron-icon icon="query-builder" slot="item-icon"></iron-icon> <span>Snoozed</span>
+                        </paper-icon-item>
+                        <paper-icon-item>
+                            <iron-icon icon="done" slot="item-icon"></iron-icon> <span>Done</span>
+                        </paper-icon-item>
+                        <paper-icon-item>
+                            <iron-icon icon="drafts" slot="item-icon"></iron-icon> <span>Drafts</span>
+                        </paper-icon-item>
+                        <paper-icon-item>
+                            <iron-icon icon="send" slot="item-icon"></iron-icon> <span>Sent</span>
+                        </paper-icon-item>
+                        <paper-icon-item>
+                            <iron-icon icon="delete" slot="item-icon"></iron-icon> <span>Trash</span>
+                        </paper-icon-item>
+                        <paper-icon-item>
+                            <iron-icon icon="report" slot="item-icon"></iron-icon> <span>Spam</span>
+                        </paper-icon-item>
+                    </div>
+                </app-drawer>
+
+                <sample-content size="2"></sample-content>
+            </app-drawer-layout>
+        </app-header-layout>
+
+
+    </template>
+
+
+
+    <!-- back code -->
+    <script>
+        class MyApp extends Polymer.Element {
+            static get is() { return 'my-app'; }
+
+            toggleMenu() {
+                if (this.$.drawerLayout.forceNarrow || !this.$.drawerLayout.narrow) {
+                    this.$.drawerLayout.forceNarrow = !this.$.drawerLayout.forceNarrow;
+                } else {
+                    this.$.drawerLayout.drawer.toggle();
+                }
+            }
+
+            // _onSearch(e) {
+            //     this.toggleSearch();
+            // };
+
+            // toggleSearch() {
+            //     this.$.search.toggle();
+            // };
+
+
+            static get properties() {
+                return {
+                    page: {
+                        type: String,
+                        reflectToAttribute: true,
+                        observer: '_pageChanged',
+                    },
+                    routeData: Object,
+                    subroute: String,
+                    // This shouldn't be neccessary, but the Analyzer isn't picking up
+                    // Polymer.Element#rootPath
+                    rootPath: String,
+                };
+            }
+
+            static get observers() {
+                return [
+                    '_routePageChanged(routeData.page)',
+                ];
+            }
+
+            _routePageChanged(page) {
+                // If no page was found in the route data, page will be an empty string.
+                // Deault to 'view1' in that case.
+                this.page = page || 'view1';
+
+                // Close a non-persistent drawer when the page & route are changed.
+                if (!this.$.drawer.persistent) {
+                    this.$.drawer.close();
+                }
+            }
+
+            _pageChanged(page) {
+                // Load page import on demand. Show 404 page if fails
+                var resolvedPageUrl = this.resolveUrl('my-' + page + '.html');
+                Polymer.importHref(
+                    resolvedPageUrl,
+                    null,
+                    this._showPage404.bind(this),
+                    true);
+            }
+
+            _showPage404() {
+                this.page = 'view404';
+            }
+        }
+
+        customElements.define(MyApp.is, MyApp);
+    </script>
+
+
+</dom-module>
