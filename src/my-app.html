@@ -1,6 +1,6 @@
 <!-- usingss -->
 
-<!-- <link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
@@ -8,7 +8,6 @@
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/paper-item/paper-icon-item.html">
-<link rel="import" href="../bower_components/paper-searchbox/paper-searchbox.html">
 <link rel="import" href="../bower_components/app-layout/app-layout.html">
 <link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
 <link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
@@ -16,21 +15,7 @@
 <link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
 <link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
 <link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
-<link rel="import" href="../bower_components/app-layout/demo/sample-content.html"> -->
-
-
-
-<link rel="import" href="/bower_components/font-roboto/roboto.html">
-<link rel="import" href="/bower_components/iron-icons/iron-icons.html">
-<link rel="import" href="/bower_components/paper-item/paper-icon-item.html">
-<link rel="import" href="/bower_components/paper-icon-button/paper-icon-button.html">
-<link rel="import" href="/bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
-<link rel="import" href="/bower_components/app-layout/app-drawer/app-drawer.html">
-<link rel="import" href="/bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
-<link rel="import" href="/bower_components/app-layout/app-header/app-header.html">
-<link rel="import" href="/bower_components/app-layout/app-header-layout/app-header-layout.html">
-<link rel="import" href="/bower_components/app-layout/app-toolbar/app-toolbar.html">
-<link rel="import" href="/bower_components/app-layout/demo/sample-content.html">
+<link rel="import" href="../bower_components/app-layout/demo/sample-content.html">
 
 <dom-module id="my-app">
     <!-- UI -->
@@ -46,13 +31,13 @@
             }
 
             app-header {
-                background-color: #02503C;
-                color: #FAFAFA;
-                --paper-icon-button-ink-color: #fff;
+                background-color: #FFFFFF;
+                color: #070707;
+                --paper-icon-button-ink-color: #2C2C2C;
             }
 
             app-header paper-icon-button {
-            --paper-icon-button-ink-color: #fff;
+                --paper-icon-button-ink-color: #2C2C2C;
             }
 
             app-drawer-layout {
@@ -61,13 +46,9 @@
 
             app-drawer {
                 --app-drawer-content-container: {
-                    background-color: #eee;
+                    background-color: #F4F5F6;
                 }
             }
-
-            /* paper-search-bar {
-                width: 220px;
-            } */
 
             .drawer-content {
                 margin-top: 80px;
@@ -75,6 +56,10 @@
                 overflow: auto;
             }
 
+            .bg-dark {
+                background: #212121;
+                color: #fff;
+            }
             /* @media (min-width: 600px) {
                 .headerButtonSearch {
                     visibility: hidden;
@@ -105,40 +90,41 @@
                     <paper-icon-button id="toggle" icon="menu" on-tap="toggleMenu"></paper-icon-button>
                     <div main-title>EMR</div>
                     <!-- main-title -->
-                    <paper-icon-button icon="search" class="headerButtonSearch" on-tap="toggleSearch"></paper-icon-button>
-                    <!-- <div class="bg-dark">
-                        <paper-searchbox raise-on-active raise-on-value icon="search" placeholder="Search Patient"></paper-searchbox>
-                    </div> -->
+                    <!-- <paper-icon-button icon="search" class="headerButtonSearch" on-tap="toggleSearch"></paper-icon-button> -->
                 </app-toolbar>
             </app-header>
 
             <app-drawer-layout id="drawerLayout">
-                
-                      <app-drawer slot="drawer">
-                        <div class="drawer-content">
-                          <paper-icon-item>
-                            <iron-icon icon="inbox" slot="item-icon"></iron-icon> <span>Inbox</span>
-                          </paper-icon-item>
-                          <paper-icon-item>
-                            <iron-icon icon="query-builder" slot="item-icon"></iron-icon> <span>Snoozed</span>
-                          </paper-icon-item>
-                          <paper-icon-item>
-                            <iron-icon icon="done" slot="item-icon"></iron-icon> <span>Done</span>
-                          </paper-icon-item>
-                          <paper-icon-item>
-                            <iron-icon icon="drafts" slot="item-icon"></iron-icon> <span>Drafts</span>
-                          </paper-icon-item>
-                          <paper-icon-item>
-                            <iron-icon icon="send" slot="item-icon"></iron-icon> <span>Sent</span>
-                          </paper-icon-item>
-                          <paper-icon-item>
-                            <iron-icon icon="delete" slot="item-icon"></iron-icon> <span>Trash</span>
-                          </paper-icon-item>
-                          <paper-icon-item>
-                            <iron-icon icon="report" slot="item-icon"></iron-icon> <span>Spam</span>
-                          </paper-icon-item>
-                        </div>
-                      </app-drawer>
+
+                <app-drawer slot="drawer">
+                    <div class="drawer-content">
+                        <paper-icon-item>
+                            <iron-icon icon="dashboard" slot="item-icon"></iron-icon> <span>Dashboard</span>
+                        </paper-icon-item>
+                        <paper-icon-item>
+                            <iron-icon icon="add-alert" slot="item-icon"></iron-icon> <span>Notifications</span>
+                        </paper-icon-item>
+                        <paper-icon-item>
+                            <iron-icon icon="event" slot="item-icon"></iron-icon> <span>Appointments</span>
+                        </paper-icon-item>
+                        <paper-icon-item>
+                            <iron-icon icon="supervisor-account" slot="item-icon"></iron-icon> <span>Patients</span>
+                        </paper-icon-item>
+                        <paper-icon-item>
+                            <iron-icon icon="list" slot="item-icon"></iron-icon> <span>Queue</span>
+                        </paper-icon-item>
+                        <paper-icon-item>
+                            <iron-icon icon="send" slot="item-icon"></iron-icon> <span>Billing</span>
+                        </paper-icon-item>
+                        <paper-icon-item>
+                            <iron-icon icon="payment" slot="item-icon"></iron-icon> <span>Collection</span>
+                        </paper-icon-item>
+                        <paper-icon-item>
+                            <iron-icon icon="trending-up" slot="item-icon"></iron-icon> <span>Reports</span>
+                        </paper-icon-item>
+
+                    </div>
+                </app-drawer>
 
                 <sample-content size="2"></sample-content>
             </app-drawer-layout>
