@@ -9,6 +9,7 @@
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/paper-item/paper-icon-item.html">
 <link rel="import" href="../bower_components/paper-searchbox/paper-searchbox.html">
+<link rel="import" href="../bower_components/app-layout/app-layout.html">
 <link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
 <link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
 <link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
@@ -16,6 +17,19 @@
 <link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
 <link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
 <link rel="import" href="../bower_components/app-layout/demo/sample-content.html">
+
+
+
+<!-- <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/paper-item/paper-icon-item.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="../bower_components/app-drawer/app-drawer.html">
+<link rel="import" href="../bower_components/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../bower_components/app-header/app-header.html">
+<link rel="import" href="../bower_components/app-header-layout/app-header-layout.html">
+<link rel="import" href="../bower_components/app-toolbar/app-toolbar.html">
+<link rel="import" href="../bower_components/demo/sample-content.html"> -->
 
 <dom-module id="my-app">
     <!-- UI -->
@@ -46,9 +60,9 @@
                 }
             }
 
-            paper-search-bar {
+            /* paper-search-bar {
                 width: 220px;
-            }
+            } */
 
             .drawer-content {
                 margin-top: 80px;
@@ -86,7 +100,7 @@
                     <paper-icon-button id="toggle" icon="menu" on-tap="toggleMenu"></paper-icon-button>
                     <div main-title>EMR</div>
                     <!-- main-title -->
-                    <!-- <paper-icon-button icon="search" class="headerButtonSearch" on-tap="toggleSearch"></paper-icon-button> -->
+                    <paper-icon-button icon="search" class="headerButtonSearch" on-tap="toggleSearch"></paper-icon-button>
                     <!-- <div class="bg-dark">
                         <paper-searchbox raise-on-active raise-on-value icon="search" placeholder="Search Patient"></paper-searchbox>
                     </div> -->
