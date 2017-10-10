@@ -17,128 +17,203 @@
 <link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
 <link rel="import" href="../bower_components/app-layout/demo/sample-content.html">
 
+<link rel="import" href="../bower_components/paper-search/paper-search.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+
+
 <dom-module id="my-app">
     <!-- UI -->
 
     <template>
-        <style>
-             :host {
-                display: block;
-            }
-
-            body {
-                margin: 0;
-            }
-
-            app-header {
-                background-color: #FFFFFF;
-                color: #070707;
-                --paper-icon-button-ink-color: #2C2C2C;
-            }
-
-            app-header paper-icon-button {
-                --paper-icon-button-ink-color: #2C2C2C;
-            }
-
-            app-drawer-layout {
-                --app-drawer-layout-content-transition: margin 0.2s;
-            }
-
-            app-drawer {
-                --app-drawer-content-container: {
-                    background-color: #F4F5F6;
+        <custom-style>
+            <style is="custom-style">
+                 :host {
+                    display: block;
                 }
-            }
 
-            .drawer-content {
-                margin-top: 80px;
-                height: calc(100% - 80px);
-                overflow: auto;
-            }
+                body {
+                    margin: 0;
+                }
 
-            .bg-dark {
-                background: #212121;
-                color: #fff;
-            }
-            /* @media (min-width: 600px) {
-                .headerButtonSearch {
-                    visibility: hidden;
+                app-header {
+                    background-color: #3284BF;
+                    color: #FFFFFF;
+                    --paper-icon-button-ink-color: #2C2C2C;
                 }
-                .headerSearchPaperInputContainer {
-                    visibility: visible;
-                }
-            }
 
-            @media (max-width: 600px) {
-                .headerButtonSearch,
-                .headerSearchPaperInputContainer {
-                    visibility: visible;
+                app-header paper-icon-button {
+                    --paper-icon-button-ink-color: #2C2C2C;
                 }
-                .headerSearchPaperInputContainer {
-                    visibility: hidden;
+
+                app-drawer-layout {
+                    --app-drawer-layout-content-transition: margin 0.2s;
                 }
-            } */
-        </style>
+
+                app-drawer {
+                    --app-drawer-content-container: {
+                        background-color: #F4F5F6;
+                    }
+                }
+
+                .drawer-content {
+                    margin-top: 80px;
+                    height: calc(100% - 80px);
+                    overflow: auto;
+                }
+            </style>
+        </custom-style>
 
         <!-- html/polymer tags -->
-        <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
-        <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
+        <!-- <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
+        <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}"></app-route> -->
 
-        <app-header-layout>
-            <app-header fixed effects="waterfall" slot="header">
-                <app-toolbar>
-                    <paper-icon-button id="toggle" icon="menu" on-tap="toggleMenu"></paper-icon-button>
-                    <div main-title>EMR</div>
-                    <!-- main-title -->
-                    <!-- <paper-icon-button icon="search" class="headerButtonSearch" on-tap="toggleSearch"></paper-icon-button> -->
-                </app-toolbar>
-            </app-header>
 
-            <app-drawer-layout id="drawerLayout">
+            <div hidden$="{{!headerSearchBarIsHidden}}">
+                <app-header-layout>
+                    <app-header fixed effects="waterfall" slot="header">
+                        <app-toolbar>
+                            <paper-icon-button id="toggle" icon="menu" on-tap="toggleMenu"></paper-icon-button>
+                            <div main-title>EMR</div>
+                            <paper-icon-button icon="search" on-tap="toggleSearch"></paper-icon-button>
+                        </app-toolbar>
 
-                <app-drawer slot="drawer">
-                    <div class="drawer-content">
-                        <paper-icon-item>
-                            <iron-icon icon="dashboard" slot="item-icon"></iron-icon> <span>Dashboard</span>
-                        </paper-icon-item>
-                        <paper-icon-item>
-                            <iron-icon icon="add-alert" slot="item-icon"></iron-icon> <span>Notifications</span>
-                        </paper-icon-item>
-                        <paper-icon-item>
-                            <iron-icon icon="event" slot="item-icon"></iron-icon> <span>Appointments</span>
-                        </paper-icon-item>
-                        <paper-icon-item>
-                            <iron-icon icon="supervisor-account" slot="item-icon"></iron-icon> <span>Patients</span>
-                        </paper-icon-item>
-                        <paper-icon-item>
-                            <iron-icon icon="list" slot="item-icon"></iron-icon> <span>Queue</span>
-                        </paper-icon-item>
-                        <paper-icon-item>
-                            <iron-icon icon="send" slot="item-icon"></iron-icon> <span>Billing</span>
-                        </paper-icon-item>
-                        <paper-icon-item>
-                            <iron-icon icon="payment" slot="item-icon"></iron-icon> <span>Collection</span>
-                        </paper-icon-item>
-                        <paper-icon-item>
-                            <iron-icon icon="trending-up" slot="item-icon"></iron-icon> <span>Reports</span>
-                        </paper-icon-item>
+                    </app-header>
 
-                    </div>
-                </app-drawer>
+                    <app-drawer-layout id="drawerLayout">
+                        <app-drawer slot="drawer">
+                            <div class="drawer-content">
+                                <paper-icon-item>
+                                    <iron-icon icon="dashboard" slot="item-icon"></iron-icon> <span>Dashboard</span>
+                                </paper-icon-item>
+                                <paper-icon-item>
+                                    <iron-icon icon="add-alert" slot="item-icon"></iron-icon> <span>Notifications</span>
+                                </paper-icon-item>
+                                <paper-icon-item>
+                                    <iron-icon icon="event" slot="item-icon"></iron-icon> <span>Appointments</span>
+                                </paper-icon-item>
+                                <paper-icon-item>
+                                    <iron-icon icon="supervisor-account" slot="item-icon"></iron-icon> <span>Patients</span>
+                                </paper-icon-item>
+                                <paper-icon-item>
+                                    <iron-icon icon="list" slot="item-icon"></iron-icon> <span>Queue</span>
+                                </paper-icon-item>
+                                <paper-icon-item>
+                                    <iron-icon icon="send" slot="item-icon"></iron-icon> <span>Billing</span>
+                                </paper-icon-item>
+                                <paper-icon-item>
+                                    <iron-icon icon="payment" slot="item-icon"></iron-icon> <span>Collection</span>
+                                </paper-icon-item>
+                                <paper-icon-item>
+                                    <iron-icon icon="trending-up" slot="item-icon"></iron-icon> <span>Reports</span>
+                                </paper-icon-item>
 
-                <sample-content size="2"></sample-content>
-            </app-drawer-layout>
-        </app-header-layout>
+                            </div>
+                        </app-drawer>
+
+                        <sample-content size="2"></sample-content>
+                    </app-drawer-layout>
+                </app-header-layout>
+            </div>
+
+            <div hidden$="{{headerSearchBarIsHidden}}">
+                <paper-search-panel icon="arrow-back"  on-tap="toggleSearch" placeholder="Search Patient" hide-filter-button="true"
+                    search="{{search}}"
+                    count="{{count}}"
+                    items="[[items]]"
+                    has-more="[[hasMore]]"
+                    loading="[[loading]]"
+                    filters="[[filters]]"
+                    selected-filters="{{selectedFilters}}"
+                    on-change-request-params="loadData">
+                <!-- <div>
+                  Show your [[count]] results for "[[search]]"
+                </div> -->
+              </paper-search-panel>                
+            </div>
+            <div hidden$="{{!headerSearchBarIsHidden}}">
+                <app-header-layout>
+                    <app-header fixed effects="waterfall" slot="header">
+                        <app-toolbar>
+                            <paper-icon-button id="toggle" icon="menu" on-tap="toggleMenu"></paper-icon-button>
+                            <div main-title>EMR</div>
+                            <paper-icon-button icon="search" on-tap="toggleSearch"></paper-icon-button>
+                        </app-toolbar>
+
+                    </app-header>
+
+                    <app-drawer-layout id="drawerLayout">
+                        <app-drawer slot="drawer">
+                            <div class="drawer-content">
+                                <paper-icon-item>
+                                    <iron-icon icon="dashboard" slot="item-icon"></iron-icon> <span>Dashboard</span>
+                                </paper-icon-item>
+                                <paper-icon-item>
+                                    <iron-icon icon="add-alert" slot="item-icon"></iron-icon> <span>Notifications</span>
+                                </paper-icon-item>
+                                <paper-icon-item>
+                                    <iron-icon icon="event" slot="item-icon"></iron-icon> <span>Appointments</span>
+                                </paper-icon-item>
+                                <paper-icon-item>
+                                    <iron-icon icon="supervisor-account" slot="item-icon"></iron-icon> <span>Patients</span>
+                                </paper-icon-item>
+                                <paper-icon-item>
+                                    <iron-icon icon="list" slot="item-icon"></iron-icon> <span>Queue</span>
+                                </paper-icon-item>
+                                <paper-icon-item>
+                                    <iron-icon icon="send" slot="item-icon"></iron-icon> <span>Billing</span>
+                                </paper-icon-item>
+                                <paper-icon-item>
+                                    <iron-icon icon="payment" slot="item-icon"></iron-icon> <span>Collection</span>
+                                </paper-icon-item>
+                                <paper-icon-item>
+                                    <iron-icon icon="trending-up" slot="item-icon"></iron-icon> <span>Reports</span>
+                                </paper-icon-item>
+
+                            </div>
+                        </app-drawer>
+
+                        <sample-content size="2"></sample-content>
+                    </app-drawer-layout>
+                </app-header-layout>
+            </div>
+
+            <div hidden$="{{headerSearchBarIsHidden}}">
+                <paper-search-panel icon="arrow-back"  on-tap="toggleSearch" placeholder="Search Patient" hide-filter-button="true"
+                    search="{{search}}"
+                    count="{{count}}"
+                    items="[[items]]"
+                    has-more="[[hasMore]]"
+                    loading="[[loading]]"
+                    filters="[[filters]]"
+                    selected-filters="{{selectedFilters}}"
+                    on-change-request-params="loadData">
+                <!-- <div>
+                  Show your [[count]] results for "[[search]]"
+                </div> -->
+              </paper-search-panel>                
+            </div>
+
+    
+ 
+
 
 
     </template>
-
-
-
+ 
     <!-- back code -->
     <script>
         class MyApp extends Polymer.Element {
             static get is() { return 'my-app'; }
+            static get properties() {
+                return {
+                    headerSearchBarIsHidden: {
+                        type: Boolean,
+                        value: true
+                    }
+
+
+                }
+            }
 
             toggleMenu() {
                 if (this.$.drawerLayout.forceNarrow || !this.$.drawerLayout.narrow) {
@@ -148,60 +223,10 @@
                 }
             }
 
-            _onSearch(e) {
-                this.toggleSearch();
-            };
-
-            toggleSearch() {
-                this.$.search.toggle();
-            };
-
-
-            static get properties() {
-                return {
-                    page: {
-                        type: String,
-                        reflectToAttribute: true,
-                        observer: '_pageChanged',
-                    },
-                    routeData: Object,
-                    subroute: String,
-                    // This shouldn't be neccessary, but the Analyzer isn't picking up
-                    // Polymer.Element#rootPath
-                    rootPath: String,
-                };
+            toggleSearch(){
+                this.headerSearchBarIsHidden = !this.headerSearchBarIsHidden
             }
 
-            static get observers() {
-                return [
-                    '_routePageChanged(routeData.page)',
-                ];
-            }
-
-            _routePageChanged(page) {
-                // If no page was found in the route data, page will be an empty string.
-                // Deault to 'view1' in that case.
-                this.page = page || 'view1';
-
-                // Close a non-persistent drawer when the page & route are changed.
-                if (!this.$.drawer.persistent) {
-                    this.$.drawer.close();
-                }
-            }
-
-            _pageChanged(page) {
-                // Load page import on demand. Show 404 page if fails
-                var resolvedPageUrl = this.resolveUrl('my-' + page + '.html');
-                Polymer.importHref(
-                    resolvedPageUrl,
-                    null,
-                    this._showPage404.bind(this),
-                    true);
-            }
-
-            _showPage404() {
-                this.page = 'view404';
-            }
         }
 
         customElements.define(MyApp.is, MyApp);

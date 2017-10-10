@@ -1,0 +1,79 @@
+[debug] [2017-10-03T13:52:48.299Z] ----------------------------------------------------------------------
+[debug] [2017-10-03T13:52:48.304Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\HECTOR\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy --debug
+[debug] [2017-10-03T13:52:48.305Z] CLI Version:   3.12.0
+[debug] [2017-10-03T13:52:48.305Z] Platform:      win32
+[debug] [2017-10-03T13:52:48.306Z] Node Version:  v6.11.2
+[debug] [2017-10-03T13:52:48.307Z] Time:          Tue Oct 03 2017 21:52:48 GMT+0800 (Taipei Standard Time)
+[debug] [2017-10-03T13:52:48.307Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-10-03T13:52:48.322Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-10-03T13:52:48.325Z] > authorizing via signed-in user
+[debug] [2017-10-03T13:52:48.328Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-10-03T13:52:48.328Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/KX2PJQ7NDF64rQ6X0uETN30zCEsPedmBqp8Yh6HgK2M',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Tue Oct 03 2017 21:52:48 GMT+0800 (Taipei Standard Time)
+[debug] [2017-10-03T13:52:49.031Z] <<< HTTP RESPONSE 200
+[debug] [2017-10-03T13:52:49.049Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/p123-6256e  
+ Tue Oct 03 2017 21:52:49 GMT+0800 (Taipei Standard Time)
+[debug] [2017-10-03T13:52:50.436Z] <<< HTTP RESPONSE 200
+[debug] [2017-10-03T13:52:50.443Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/p123-6256e/tokens  
+ Tue Oct 03 2017 21:52:50 GMT+0800 (Taipei Standard Time)
+[debug] [2017-10-03T13:52:51.450Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'p123-6256e'...
+[info] 
+[info] i  deploying hosting
+[info] i  hosting: preparing build/default directory for upload...
+[debug] [2017-10-03T13:52:54.315Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/p123-6256e/uploads/-KvXVgBPNAygz9cHm4bN?fileCount=97&message=  
+ Tue Oct 03 2017 21:52:54 GMT+0800 (Taipei Standard Time)
+[debug] [2017-10-03T13:53:00.047Z] <<< HTTP RESPONSE 200
+[debug] [2017-10-03T13:53:00.048Z] [hosting] .tgz uploaded successfully, waiting for extraction
+[info] +  hosting: 97 files uploaded successfully
+[info] i  starting release process (may take several minutes)...
+[debug] [2017-10-03T13:53:02.239Z] >>> HTTP REQUEST POST https://deploy.firebase.com/v1/projects/p123-6256e/releases { hosting: 
+   { public: 'build/default',
+     ignore: [ 'firebase.json', '**/.*', '**/node_modules/**' ],
+     version: '-KvXVgBPNAygz9cHm4bN',
+     prefix: '-KvXVgBPNAygz9cHm4bN/',
+     manifest: [] } } 
+ Tue Oct 03 2017 21:53:02 GMT+0800 (Taipei Standard Time)
+[debug] [2017-10-03T13:53:03.347Z] <<< HTTP RESPONSE 200
+[debug] [2017-10-06T11:52:16.117Z] ----------------------------------------------------------------------
+[debug] [2017-10-06T11:52:16.120Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\HECTOR\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2017-10-06T11:52:16.121Z] CLI Version:   3.12.0
+[debug] [2017-10-06T11:52:16.121Z] Platform:      win32
+[debug] [2017-10-06T11:52:16.121Z] Node Version:  v6.11.2
+[debug] [2017-10-06T11:52:16.122Z] Time:          Fri Oct 06 2017 19:52:16 GMT+0800 (Taipei Standard Time)
+[debug] [2017-10-06T11:52:16.122Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-10-06T11:52:16.138Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-10-06T11:52:16.138Z] > authorizing via signed-in user
+[debug] [2017-10-06T11:52:16.141Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-10-06T11:52:16.141Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/KX2PJQ7NDF64rQ6X0uETN30zCEsPedmBqp8Yh6HgK2M',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Fri Oct 06 2017 19:52:16 GMT+0800 (Taipei Standard Time)
+[debug] [2017-10-06T11:52:16.383Z] <<< HTTP RESPONSE 200
+[debug] [2017-10-06T11:52:16.389Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/p123-6256e  
+ Fri Oct 06 2017 19:52:16 GMT+0800 (Taipei Standard Time)
+[debug] [2017-10-06T11:52:17.568Z] <<< HTTP RESPONSE 200
+[debug] [2017-10-06T11:52:17.569Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/p123-6256e/tokens  
+ Fri Oct 06 2017 19:52:17 GMT+0800 (Taipei Standard Time)
+[debug] [2017-10-06T11:52:18.479Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\HECTOR\Desktop\temporary projects\EMR\emr'...
+[info] 
+[debug] [2017-10-06T11:52:18.482Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/p123-6256e  
+ Fri Oct 06 2017 19:52:18 GMT+0800 (Taipei Standard Time)
+[debug] [2017-10-06T11:52:19.881Z] <<< HTTP RESPONSE 200
+[debug] [2017-10-06T11:52:19.882Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/291030422568/clients/_:getWebAppConfig  
+ Fri Oct 06 2017 19:52:19 GMT+0800 (Taipei Standard Time)
+[debug] [2017-10-06T11:52:21.646Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: build/default
+[info] +  hosting: Local server: http://localhost:5000
+
